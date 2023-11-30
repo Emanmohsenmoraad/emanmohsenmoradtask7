@@ -1,0 +1,32 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let employee of employees">{{employee.name}}
+        <button class="btn btn-success float-end"style="margin-left: 50px;" (click)="editItem(employee)">Edit</button>
+         <button class="btn btn-info float-end" style=" margin-left: 50px;"  (click)="empltrans(employee)">View</button>
+         <button class="btn btn-danger float-end " style="margin-left: 50px;" (click)="deleteItem(employee)">
+            Delete
+        </button>
+    </li>
+</ul>
+
+
+<button class="btn btn-primary" style=" margin-left: 200px; margin-top: 20px;" (click)="toggleAddForm()">Add User </button>
+<div *ngIf="showAddForm">
+    <h3>Add User</h3>
+    <label>Name:</label>
+    <input #myvalue [(ngModel)]="newItem.name" placeholder="Name" value="name">
+    <label>city:</label>
+    <input #myvalue [(ngModel)]="newItem.city" placeholder="City" value="name">
+
+    <button (click)="addemp(myvalue.value)">Add User</button>
+
+</div>
+
+<div *ngIf="selectedItem">
+    <h2>Editing User: {{ selectedItem.name }}</h2>
+    <label>Name:</label>
+    <input [(ngModel)]="selectedItem.name" />
+    <label>City:</label>
+    <input [(ngModel)]="selectedItem.city" />
+
+    <button (click)="updateItem()">Update</button>
+</div>
